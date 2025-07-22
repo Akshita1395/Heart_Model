@@ -1,127 +1,167 @@
-#Heart Failure Risk Prediction
-This project is a Flask-based web application that predicts the risk of heart failure based on user-provided medical data. The application uses a pre-trained machine learning model and a scaler, both loaded from a pickled file (final_model.pkl), to make predictions.
-Features
+##  Heart Failure Risk Prediction
 
-Input patient data through a web form.
-Predicts heart failure risk (High Risk or Low Risk) using a machine learning model.
-Displays prediction results on the web interface.
-Handles invalid inputs gracefully with error messages.
+This is a Flask-based web application that predicts the **risk of heart failure** based on medical inputs. It uses a machine learning model and a scaler, both loaded from a single `final_model.pkl` file.
 
-Prerequisites
-Before running the application, ensure you have the following installed:
+---
 
-Python 3.8 or higher
-Visual Studio Code (VS Code)
-Git
-A web browser
+###  Features
 
-Required Python Packages
-Install the required Python packages using pip:
+* Web-based form to input patient data
+* Predicts **High Risk** or **Low Risk** of heart failure
+* Displays results on-screen instantly
+* Handles invalid input gracefully
+
+---
+
+###  Prerequisites
+
+* Python 3.8+
+* Visual Studio Code
+* Git
+* Web browser
+
+---
+
+###  Required Python Packages
+
+Install dependencies:
+
+```bash
 pip install flask numpy scikit-learn
+```
 
-Project Structure
+Or use a `requirements.txt`:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+###  Project Structure
+
+```
 heart-failure-prediction/
-│
-├── app.py               # Flask application script
-├── index.html           # HTML template for the web interface
-├── final_model.pkl      # Pickled file containing the trained model and scaler
-└── README.md            # This file
+├── app.py               # Flask backend
+├── templates/
+│   └── index.html       # Frontend form
+├── final_model.pkl      # Trained model + scaler
+└── README.md            # Project guide
+```
 
-Installation
+---
 
-Clone the Repository:
+###  Installation & Running (VS Code)
+
+#### 1. Clone the Repository
+
+```bash
 git clone https://github.com/your-username/heart-failure-prediction.git
 cd heart-failure-prediction
+```
 
+#### 2. (Optional) Create Virtual Environment
 
-Set Up a Virtual Environment (optional but recommended):
+```bash
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+# Activate it:
+# On Windows:
+venv\Scripts\activate
+# On macOS/Linux:
+source venv/bin/activate
+```
 
+#### 3. Install Dependencies
 
-Install Dependencies:
+```bash
 pip install -r requirements.txt
+```
 
-If you don't have a requirements.txt, install the required packages directly:
+If no `requirements.txt`:
+
+```bash
 pip install flask numpy scikit-learn
+```
 
+#### 4. Ensure Model Exists
 
-Ensure final_model.pkl is Available:
+Make sure `final_model.pkl` is in the root directory. It should contain:
 
-The application requires a final_model.pkl file containing the trained model and scaler. Ensure this file is present in the project root directory.
-If you need to generate this file, train a machine learning model (e.g., using scikit-learn) and save it with the structure {'model': your_model, 'scaler': your_scaler} using pickle.
+```python
+{'model': your_trained_model, 'scaler': your_fitted_scaler}
+```
 
+---
 
+### ▶ Running the App
 
-Running the Application in Visual Studio Code
+#### From VS Code:
 
-Open the Project in VS Code:
+1. Open folder in VS Code
+2. Select Python interpreter (use the virtual environment if created)
+3. Open `app.py` and hit `Run` (or press `F5`)
 
-Launch VS Code.
-Select File > Open Folder and choose the heart-failure-prediction directory.
+#### Or via terminal:
 
+```bash
+python app.py
+```
 
-Set Up the Python Interpreter:
+App will run on: [http://127.0.0.1:5000](http://127.0.0.1:5000)
 
-Ensure the correct Python interpreter is selected (the one with Flask installed).
-Press Ctrl+Shift+P (or Cmd+Shift+P on Mac) to open the Command Palette.
-Type Python: Select Interpreter and choose the Python version from your virtual environment or global installation.
+---
 
+###  Usage
 
-Run the Application:
+#### Input Fields:
 
-Open the app.py file in VS Code.
-Click the Run button (or press F5) to start the Flask development server. Alternatively, open the terminal in VS Code (Terminal > New Terminal) and run:python app.py
+| Field                    | Example  |
+| ------------------------ | -------- |
+| Age                      | 65.0     |
+| Anaemia                  | 0 or 1   |
+| Creatinine Phosphokinase | 582      |
+| Diabetes                 | 0 or 1   |
+| Ejection Fraction        | 20       |
+| High Blood Pressure      | 0 or 1   |
+| Platelets                | 265000.0 |
+| Serum Creatinine         | 1.9      |
+| Serum Sodium             | 130      |
+| Sex                      | 0 or 1   |
+| Smoking                  | 0 or 1   |
+| Follow-up Time (days)    | 4        |
 
+#### Output:
 
-The application will start, and you should see output indicating the server is running (e.g., Running on http://127.0.0.1:5000).
+* **Prediction:** “High Risk of Death ” or “Low Risk of Death ”
+* **Error handling:** If invalid input, user-friendly error is shown
 
+---
 
-Access the Application:
+###  Troubleshooting
 
-Open a web browser and navigate to http://127.0.0.1:5000.
-Fill out the form with the required medical data and click "Predict Risk" to see the prediction.
+| Issue                 | Fix                                                 |
+| --------------------- | --------------------------------------------------- |
+| `ModuleNotFoundError` | Run: `pip install flask numpy scikit-learn`         |
+| Port already in use   | Use another: `app.run(debug=True, port=5001)`       |
+| Model error / crash   | Make sure `final_model.pkl` is valid and compatible |
 
+---
 
+###  Customization
 
-Usage
+* Improve UI with custom CSS or Tailwind
+* Add charts or animations (Chart.js / D3.js)
+* Export predictions as PDF or email summary
 
-Input Fields:
+---
 
-Age: Patient's age (e.g., 65.0).
-Anaemia: 0 (No) or 1 (Yes).
-Creatinine Phosphokinase: Integer value (e.g., 582).
-Diabetes: 0 (No) or 1 (Yes).
-Ejection Fraction: Integer value (e.g., 20).
-High Blood Pressure: 0 (No) or 1 (Yes).
-Platelets: Float value (e.g., 265000.0).
-Serum Creatinine: Float value (e.g., 1.9).
-Serum Sodium: Integer value (e.g., 130).
-Sex: 0 (Female) or 1 (Male).
-Smoking: 0 (No) or 1 (Yes).
-Follow-up Time: Integer value representing days (e.g., 4).
+###  Contributing
 
+Pull requests are welcome. Fork the repo, make changes on a new branch, and submit a PR.
 
-Prediction:
+---
 
-After submitting the form, the application will display either "High Risk of Death" or "Low Risk of Death" based on the model's prediction.
-If invalid inputs are provided, an error message will appear.
+###  License
 
+This project is licensed under the [MIT License](LICENSE).
 
-
-Notes
-
-The application runs in debug mode (debug=True) for development purposes. Disable this in production for security.
-Ensure the final_model.pkl file is compatible with the Python and scikit-learn versions used.
-The web interface is minimal and can be enhanced with CSS for better styling.
-
-Troubleshooting
-
-Module Not Found Error: Ensure all required packages are installed in the active Python environment.
-Port Conflict: If port 5000 is in use, specify a different port in app.py (e.g., app.run(debug=True, port=5001)).
-Invalid Input Error: Verify that all form inputs are numeric and within valid ranges.
-
-Contributing
-Contributions are welcome! Please fork the repository, create a new branch, and submit a pull request with your changes.
-License
-This project is licensed under the MIT License.
