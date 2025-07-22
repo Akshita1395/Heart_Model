@@ -1,4 +1,4 @@
-Heart Failure Risk Prediction
+#Heart Failure Risk Prediction
 This project is a Flask-based web application that predicts the risk of heart failure based on user-provided medical data. The application uses a pre-trained machine learning model and a scaler, both loaded from a pickled file (final_model.pkl), to make predictions.
 Features
 
