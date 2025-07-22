@@ -1,36 +1,36 @@
-##  Heart Failure Risk Prediction
+# Heart Failure Risk Prediction
 
-This is a Flask-based web application that predicts the **risk of heart failure** based on medical inputs. It uses a machine learning model and a scaler, both loaded from a single `final_model.pkl` file.
-
----
-
-###  Features
-
-* Web-based form to input patient data
-* Predicts **High Risk** or **Low Risk** of heart failure
-* Displays results on-screen instantly
-* Handles invalid input gracefully
+This is a Flask-based web application that predicts the risk of heart failure based on patient medical inputs. It uses a machine learning model and a scaler stored in a single `final_model.pkl` file.
 
 ---
 
-###  Prerequisites
+## Features
 
-* Python 3.8+
-* Visual Studio Code
-* Git
-* Web browser
+- Web interface to enter patient medical data  
+- Predicts "High Risk" or "Low Risk" of death  
+- Displays real-time prediction result  
+- Handles invalid input gracefully
 
 ---
 
-###  Required Python Packages
+## Prerequisites
 
-Install dependencies:
+- Python 3.8 or above  
+- Git  
+- Visual Studio Code  
+- Web browser
+
+---
+
+## Required Python Packages
+
+Install dependencies manually:
 
 ```bash
 pip install flask numpy scikit-learn
-```
+````
 
-Or use a `requirements.txt`:
+Or use:
 
 ```bash
 pip install -r requirements.txt
@@ -38,82 +38,68 @@ pip install -r requirements.txt
 
 ---
 
-###  Project Structure
+## Project Structure
 
 ```
 heart-failure-prediction/
-├── app.py               # Flask backend
+├── app.py               # Flask application
 ├── templates/
-│   └── index.html       # Frontend form
-├── final_model.pkl      # Trained model + scaler
-└── README.md            # Project guide
+│   └── index.html       # Web form UI
+├── final_model.pkl      # Pickled model + scaler
+└── README.md            # Project documentation
 ```
 
 ---
 
-###  Installation & Running (VS Code)
+## Installation & Running
 
-#### 1. Clone the Repository
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/your-username/heart-failure-prediction.git
 cd heart-failure-prediction
 ```
 
-#### 2. (Optional) Create Virtual Environment
+### 2. (Optional) Create Virtual Environment
 
 ```bash
 python -m venv venv
-# Activate it:
-# On Windows:
+# Windows:
 venv\Scripts\activate
-# On macOS/Linux:
+# macOS/Linux:
 source venv/bin/activate
 ```
 
-#### 3. Install Dependencies
+### 3. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-If no `requirements.txt`:
+### 4. Ensure Model File Exists
 
-```bash
-pip install flask numpy scikit-learn
-```
-
-#### 4. Ensure Model Exists
-
-Make sure `final_model.pkl` is in the root directory. It should contain:
+Place `final_model.pkl` in the root directory.
+It must contain:
 
 ```python
-{'model': your_trained_model, 'scaler': your_fitted_scaler}
+{'model': trained_model, 'scaler': fitted_scaler}
 ```
 
 ---
 
-### ▶ Running the App
-
-#### From VS Code:
-
-1. Open folder in VS Code
-2. Select Python interpreter (use the virtual environment if created)
-3. Open `app.py` and hit `Run` (or press `F5`)
-
-#### Or via terminal:
+## Running the App
 
 ```bash
 python app.py
 ```
 
-App will run on: [http://127.0.0.1:5000](http://127.0.0.1:5000)
+Visit [http://127.0.0.1:5000](http://127.0.0.1:5000) in your browser.
 
 ---
 
-###  Usage
+## Usage
 
-#### Input Fields:
+### Input Fields:
 
 | Field                    | Example  |
 | ------------------------ | -------- |
@@ -128,40 +114,40 @@ App will run on: [http://127.0.0.1:5000](http://127.0.0.1:5000)
 | Serum Sodium             | 130      |
 | Sex                      | 0 or 1   |
 | Smoking                  | 0 or 1   |
-| Follow-up Time (days)    | 4        |
+| Follow-up Time           | 4        |
 
-#### Output:
+### Output:
 
-* **Prediction:** “High Risk of Death ” or “Low Risk of Death ”
-* **Error handling:** If invalid input, user-friendly error is shown
-
----
-
-###  Troubleshooting
-
-| Issue                 | Fix                                                 |
-| --------------------- | --------------------------------------------------- |
-| `ModuleNotFoundError` | Run: `pip install flask numpy scikit-learn`         |
-| Port already in use   | Use another: `app.run(debug=True, port=5001)`       |
-| Model error / crash   | Make sure `final_model.pkl` is valid and compatible |
+* "High Risk of Death" or "Low Risk of Death"
+* If input is invalid, a descriptive error message is displayed
 
 ---
 
-###  Customization
+## Troubleshooting
 
-* Improve UI with custom CSS or Tailwind
-* Add charts or animations (Chart.js / D3.js)
-* Export predictions as PDF or email summary
-
----
-
-###  Contributing
-
-Pull requests are welcome. Fork the repo, make changes on a new branch, and submit a PR.
+| Problem              | Fix                                         |
+| -------------------- | ------------------------------------------- |
+| Missing modules      | Run: `pip install flask numpy scikit-learn` |
+| Port 5000 busy       | Change to `app.run(debug=True, port=5001)`  |
+| Model crash or error | Check `final_model.pkl` is valid            |
 
 ---
 
-###  License
+## Customization Ideas
 
-This project is licensed under the [MIT License](LICENSE).
+* Enhance UI using CSS or design frameworks
+* Add charts or animations
+* Enable export to PDF or share prediction via email
+
+---
+
+## Contributing
+
+Contributions are welcome! Fork the repository, create a new branch, and submit a pull request.
+
+---
+
+## License
+
+This project is licensed under the MIT License.
 
