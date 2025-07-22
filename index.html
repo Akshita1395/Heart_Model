@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Heart Failure Risk Predictor</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #c9d6ff, #e2e2e2);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 35px;
+      max-width: 720px;
+      width: 100%;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #003049;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+      font-size: 14px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      background-color: #0077b6;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #023e8a;
+    }
+
+    .result {
+      margin-top: 25px;
+      padding: 15px;
+      background-color: #e0f4ff;
+      border-left: 6px solid #00b4d8;
+      border-radius: 8px;
+      color: #003049;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="glass-card">
+    <h2><b> Heart Failure Risk Prediction </b></h2>
+    <form method="POST" action="/predict">
+      <div class="form-group"><label>Age</label><input type="number" name="age" required></div>
+      <div class="form-group"><label>Anaemia (0 or 1)</label><input type="number" name="anaemia" required></div>
+      <div class="form-group"><label>Creatinine Phosphokinase</label><input type="number" name="creatinine_phosphokinase" required></div>
+      <div class="form-group"><label>Diabetes (0 or 1)</label><input type="number" name="diabetes" required></div>
+      <div class="form-group"><label>Ejection Fraction</label><input type="number" name="ejection_fraction" required></div>
+      <div class="form-group"><label>High Blood Pressure (0 or 1)</label><input type="number" name="high_blood_pressure" required></div>
+      <div class="form-group"><label>Platelets</label><input type="number" name="platelets" required></div>
+      <div class="form-group"><label>Serum Creatinine</label><input type="number" step="any" name="serum_creatinine" required></div>
+      <div class="form-group"><label>Serum Sodium</label><input type="number" name="serum_sodium" required></div>
+      <div class="form-group"><label>Sex (0 or 1)</label><input type="number" name="sex" required></div>
+      <div class="form-group"><label>Smoking (0 or 1)</label><input type="number" name="smoking" required></div>
+      <div class="form-group"><label>Follow-up Time (Days)</label><input type="number" name="time" required></div>
+      <button type="submit">Predict Risk</button>
+    </form>
+
+    {% if prediction_text %}
+      <div class="result">{{ prediction_text }}</div>
+    {% endif %}
+  </div>
+</body>
+</html>
